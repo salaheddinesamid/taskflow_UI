@@ -168,7 +168,7 @@ export function Login() {
               <a href=" https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md">Can't log in?</a>
             </div>
             <div className="col">
-              <a href=" https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md">Create an account</a>
+              <a href="http://localhost:3000/signup">Create an account</a>
             </div>
           </div>
           <hr />

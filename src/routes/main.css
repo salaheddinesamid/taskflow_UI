@@ -1,0 +1,165 @@
+/* main.css */
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+/* Header Styles */
+header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+header .logo {
+    width: 60px;
+    height: auto;
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #2563eb;
+}
+
+header .btn-outline-primary {
+    border-color: #2563eb;
+    color: #2563eb;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header .btn-outline-primary:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* Hero Section */
+.hero {
+    padding: 200px 60px;
+    text-align: center;
+    background-color: #e5e7eb;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+/* Register Component */
+.register label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #374151;
+}
+
+.register input {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+}
+
+.register button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.register button.btn-primary {
+    background-color: #2563eb;
+    color: white;
+}
+
+.register button.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.register button.btn-outline-secondary {
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    color: #6b7280;
+}
+
+.register button.btn-outline-secondary:hover {
+    border-color: #6b7280;
+    color: #374151;
+}
+
+.register .icon {
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* Services Component */
+.service-card {
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.service-card h4 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #1f2937;
+}
+
+.service-card img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header .col-xl-8,
+    header .col-xl-4 {
+        flex: 100%;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 30px 10px;
+    }
+
+    .register input {
+        width: 100%;
+    }
+
+    .service-card {
+        margin-bottom: 20px;
+    }
+}
+.img-fluid{
+    transition: 2s;
+}

@@ -1,0 +1,93 @@
+/* Main.css */
+
+/* General Layout Styles */
+.row {
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Left-Hand Side */
+  .left-hand-side {
+    background-color: #ffffff; /* Light background for contrast */
+    border-radius: 8px;
+    padding: 16px;
+    height: 100%;
+  }
+  
+  .left-hand-side .d-flex {
+    align-items: center;
+  }
+  
+  .left-hand-side p {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .left-hand-side .btn {
+    width: 100%; /* Full-width button */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .left-hand-side .btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  .service-item {
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .service-item:not(:last-child) {
+    margin-bottom: 8px; /* Add spacing between items */
+  }
+  
+  .service-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .service-item:hover {
+    background-color: #f1f1f1; /* Subtle hover effect */
+    border-color: #bbb;
+  }
+  
+  /* Right-Hand Side */
+  .right-hand-side {
+    padding: 16px;
+  }
+  
+  .right-hand-side h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .left-hand-side,
+    .right-hand-side {
+      padding: 12px;
+    }
+  
+    .left-hand-side .btn {
+      font-size: 12px;
+      padding: 8px 16px;
+    }
+  
+    .service-item p {
+      font-size: 12px;
+    }
+  }
+  

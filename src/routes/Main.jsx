@@ -24,7 +24,9 @@ export function Main() {
                 </nav>
             </div>
             <div className="col-xl-4 d-flex align-items-center justify-content-end">
-                <button className="btn btn-outline-primary me-2">Sign Up</button>
+                <button className="btn btn-outline-primary me-2" onClick={()=>{
+                  navigate("/signup")
+                }}>Sign Up</button>
                 <button className="btn btn-outline-primary" onClick={()=>{
                   navigate("/login")
                 }}>Sign In</button>

@@ -11,6 +11,7 @@ import { ProjectDashboard } from "./routes/pm_dashboard/ProjectDashboard"; // Co
 import { Search } from "./routes/Search";
 import { UserDashboard } from "./routes/user_dashboard/UserDashboard";
 import { SignUp } from "./routes/SignUp";
+import { Welcome } from "./routes/Welcome";
 
 function App() {
   // State to manage user information, initialized from localStorage
@@ -29,6 +30,7 @@ function App() {
           {/* Define the route for the login page */}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/welcome" element={<Welcome/>}/>
 
           {/* Define the route for the project dashboard */}
           <Route path="/manager_dashboard" element={<ProjectDashboard />} />

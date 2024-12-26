@@ -4,28 +4,53 @@ import googleLogo from "../media/google.png";
 import slackLogo from "../media/slack.png";
 import microsoftLogo from "../media/microsoft.png";
 import logo from "../media/logo.png";
-
 import "./Login.css";
-export function SignUp(){
-    const [thirdParties] = useState([
-        { id: 1, name: "Google", img: googleLogo },
-        { id: 2, name: "Slack", img: slackLogo },
-        { id: 3, name: "Microsoft", img: microsoftLogo },
-      ]);
-    const [userCredentials,setUserCredentials] = useState({
-        firstName : "",
-        lastName : "",
-        email : "",
-        password : ""
-    })
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-    const handleSignUp = () =>{
+export function SignUp() {
+  const [thirdParties] = useState([
+    { id: 1, name: "Google", img: googleLogo },
+    { id: 2, name: "Slack", img: slackLogo },
+    { id: 3, name: "Microsoft", img: microsoftLogo },
+  ]);
 
+  const [userCredentials, setUserCredentials] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    role: "DEVELOPER",
+    password: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignUp = async (e) => {
+    e.preventDefault(); // Prevent form refresh
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/user/register",
+        userCredentials
+      );
+      //setSuccessMessage("Registration successful! Please log in.");
+      localStorage.setItem("user",JSON.stringify(response.data.user))
+      navigate("/welcome")
+    } catch (err) {
+      setErrorMessage(
+        err.response?.data?.message || "An error occurred. Please try again."
+      );
     }
-    return(
-        <div
-        className="row d-flex justify-content-center align-items-center"
-        style={{
+  };
+
+  return (
+    <div
+      className="row d-flex justify-content-center align-items-center"
+      style={{
         height: "100vh",
         backgroundImage: `url(${loginBack})`,
         backgroundSize: "cover",
@@ -33,14 +58,15 @@ export function SignUp(){
     >
       <div
         className="card shadow-lg"
-        style={{ width: "100%", maxWidth: "400px", borderRadius: "10px", height: "90vh" }}
+        style={{
+          width: "100%",
+          maxWidth: "400px",
+          borderRadius: "10px",
+          height: "90vh",
+        }}
       >
         <div className="card-body text-center">
-          <img
-            src={logo}
-            alt="TaskFlow Logo"
-            style={{ width: "100px" }}
-          />
+          <img src={logo} alt="TaskFlow Logo" style={{ width: "100px" }} />
           <h2 className="mb-4" style={{ fontWeight: "bold", color: "#343a40" }}>
             Welcome to TaskFlow
           </h2>
@@ -49,7 +75,7 @@ export function SignUp(){
           </p>
 
           <form onSubmit={handleSignUp}>
-          <div className="mb-3">
+            <div className="mb-3">
               <input
                 type="text"
                 id="firstName"
@@ -57,30 +83,32 @@ export function SignUp(){
                 placeholder="Enter your first name"
                 value={userCredentials.firstName}
                 onChange={(e) =>
-                  setUserCredentials({ ...userCredentials, firstName: e.target.value })
+                  setUserCredentials({
+                    ...userCredentials,
+                    firstName: e.target.value,
+                  })
                 }
                 required
-                aria-required="true"
-                aria-label="Email Address"
               />
-              <div className="invalid-feedback">Please enter your first name</div>
             </div>
+
             <div className="mb-3">
               <input
                 type="text"
                 id="lastName"
                 className="form-control"
-                placeholder="Enter your lastName"
+                placeholder="Enter your last name"
                 value={userCredentials.lastName}
                 onChange={(e) =>
-                  setUserCredentials({ ...userCredentials, lastName: e.target.value })
+                  setUserCredentials({
+                    ...userCredentials,
+                    lastName: e.target.value,
+                  })
                 }
                 required
-                aria-required="true"
-                aria-label="Email Address"
               />
-              <div className="invalid-feedback">Please enter your last name</div>
             </div>
+
             <div className="mb-3">
               <input
                 type="email"
@@ -89,14 +117,15 @@ export function SignUp(){
                 placeholder="Enter your email"
                 value={userCredentials.email}
                 onChange={(e) =>
-                  setUserCredentials({ ...userCredentials, email: e.target.value })
+                  setUserCredentials({
+                    ...userCredentials,
+                    email: e.target.value,
+                  })
                 }
                 required
-                aria-required="true"
-                aria-label="Email Address"
               />
-              <div className="invalid-feedback">Email is required</div>
             </div>
+
             <div className="mb-3">
               <input
                 type="password"
@@ -105,14 +134,15 @@ export function SignUp(){
                 placeholder="Enter your password"
                 value={userCredentials.password}
                 onChange={(e) =>
-                  setUserCredentials({ ...userCredentials, password: e.target.value })
+                  setUserCredentials({
+                    ...userCredentials,
+                    password: e.target.value,
+                  })
                 }
                 required
-                aria-required="true"
-                aria-label="Password"
               />
-              <div className="invalid-feedback">Password is required</div>
             </div>
+
             <button
               type="submit"
               className="btn btn-primary w-100"
@@ -121,13 +151,19 @@ export function SignUp(){
                 fontWeight: "500",
                 border: "none",
               }}
-              disabled={false}
             >
               Sign up
             </button>
           </form>
 
-          <div className="mt-2">
+          {errorMessage && (
+            <div className="alert alert-danger mt-3">{errorMessage}</div>
+          )}
+          {successMessage && (
+            <div className="alert alert-success mt-3">{successMessage}</div>
+          )}
+
+          <div className="mt-4">
             <p style={{ color: "gray" }}>Continue with:</p>
           </div>
           <div className="row">
@@ -147,11 +183,12 @@ export function SignUp(){
                   src={thirdParty.img}
                   alt={thirdParty.name}
                   style={{ width: 25 }}
-                />{" "}
+                />
                 {thirdParty.name}
               </button>
             ))}
           </div>
+
           <hr />
           <footer className="text-center py-3">
             <p
@@ -164,5 +201,5 @@ export function SignUp(){
         </div>
       </div>
     </div>
-    )
+  );
 }

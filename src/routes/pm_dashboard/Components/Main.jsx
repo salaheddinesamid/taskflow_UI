@@ -67,15 +67,12 @@ const Main = ({project}) => {
                 </ListItem>
               ))}
             </List>
-            <div style={{ marginTop: '20px' }}>
-              <button className='btn btn-danger' onClick={backToDashboard}>Back to projects</button>  
-            </div>
           </div>
         );
       };
       
       return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', fontSize : "14px"}}>
           <SideBar />
           <div style={{ flex: 1 }}>
             <Header />

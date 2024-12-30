@@ -1,195 +1,122 @@
-import React, { useEffect, useState } from "react";
-import logo from "../media/logo.png";
-import googleLogo from "../media/google.png";
-import microsoftLogo from "../media/microsoft.png";
-import softDev from "../media/softdev.png";
-import marketing from "../media/marketing.png"
-import "./main.css"; // Assume styles are in this file
-import planAndRecognize from "../media/plan_and_recognize.webp";
-import alignWorkWithGoals from "../media/rb_2221.png";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Button, Typography, Box, Grid, Container } from "@mui/material";
 
-export function Main() {
-  const navigate = useNavigate();
-    const Header = () => (
-        <header className="row align-items-center p-3">
-            <div className="col-xl-8 d-flex align-items-center justify-content-between">
-                <img src={logo} alt="TaskFlow Logo" className="logo" />
-                <h3 className="fw-bolder">TaskFlow</h3>
-                <nav>
-                    <a href="#functionality">Functionality</a>
-                    <a href="#guide">Product Guide</a>
-                    <a href="#models">Models</a>
-                    <a href="#enterprise">Enterprise</a>
-                </nav>
-            </div>
-            <div className="col-xl-4 d-flex align-items-center justify-content-end">
-                <button className="btn btn-outline-primary me-2" onClick={()=>{
-                  navigate("/signup")
-                }}>Sign Up</button>
-                <button className="btn btn-outline-primary" onClick={()=>{
-                  navigate("/login")
-                }}>Sign In</button>
-            </div>
-        </header>
-    );
 
-    const Register = () => {
-        const [email, setEmail] = useState("");
-
-        const handleRegister = () => {
-            if (!/\S+@\S+\.\S+/.test(email)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
-            alert(`Registered with ${email}`);
-        };
-
-        return (
-            <div className="register">
-                <label htmlFor="email" className="fw-bold">
-                    Professional Email
-                </label>
-                <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    className="form-control w-50"
-                    placeholder="you@company.com"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <small className="text-muted">
-                    Use your work email address to separate personal and professional life.
-                </small>
-                <button className="btn btn-primary mt-3" onClick={handleRegister}>
-                    Register
-                </button>
-                <hr />
-                <div className="row">
-                    <div className="col-6">
-                        <button className="btn btn-outline-secondary w-100">
-                            <img src={microsoftLogo} alt="Microsoft Logo" className="icon" /> Microsoft
-                        </button>
-                    </div>
-                    <div className="col-6">
-                        <button className="btn btn-outline-secondary w-100">
-                            <img src={googleLogo} alt="Google Logo" className="icon" /> Google
-                        </button>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-    const Services = () => {
-        const services = [
-            { id: 1, name: "Software Development", image: softDev },
-            { id: 2, name: "Marketing", image: marketing },
-            { id: 3, name: "Computer Science", image: "" },
-            { id: 4, name: "Design", image: "" },
-        ];
-
-        return (
-            <div className="row mt-4">
-                {services.map((service) => (
-                    <div className="col col-lg-3 col-md-6 text-center service-card" key={service.id}>
-                        <h4>{service.name}</h4>
-                        <img
-                            src={service.image || "/default-image.png"}
-                            alt={service.name}
-                            className="service-image"
-                        />
-                    </div>
-                ))}
-            </div>
-        );
-    };
-const Desc = () => {
-  const components = [
-    {
-      id: 1,
-      name: "Plan and recognize tasks",
-      description: "From short projects to large cross-functional programs, TaskFlow breaks big ideas down into achievable steps.",
-      img_src: planAndRecognize, // Replace with actual image path or import
-    },
-    {
-      id: 2,
-      name: "Align work to goals",
-      description: "From short projects to large cross-functional programs, TaskFlow breaks big ideas down into achievable steps.",
-      img_src: alignWorkWithGoals, // Replace with actual image path or import
-    },
-  ];
-
-  const [targetComponent, setTargetComponent] = useState(1);
-
-  // Log state changes
-  useEffect(() => {
-    console.log("Selected Component ID:", targetComponent);
-  }, [targetComponent]);
-
+export default function Main() {
   return (
-    <div className="container mt-4 mb-3">
-      <div className="row">
-        <h1 className="fw-bold">Made for complex projects or everyday tasks</h1>
-      </div>
+    <Box sx={{ fontFamily: "Arial, sans-serif", color: "#253858" }}>
+      {/* Header */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "20px 50px",
+          backgroundColor: "#0747A6",
+          color: "#FFFFFF",
+        }}
+      >
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          TaskFlow
+        </Typography>
+        <Box sx={{ display: "flex", gap: 3 }}>
+          <Button color="inherit">Features</Button>
+          <Button color="inherit">Pricing</Button>
+          <Button color="inherit">Integrations</Button>
+          <Button color="inherit" variant="outlined" sx={{ color: "#FFFFFF", borderColor: "#FFFFFF" }}>
+            Get Started
+          </Button>
+        </Box>
+      </Box>
 
-      <div className="row">
-        {/* Left Column: Buttons */}
-        <div className="col-4">
-          {components.map((component) => (
-            <div className="row mb-3" key={component.id}>
-              <button
-                className={`btn fw-bolder ${targetComponent === component.id ? "text-primary" : "text-dark"}`}
-                style={{ fontSize: "24px" }}
-                onClick={() => setTargetComponent(component.id)}
-              >
-                {component.name}
-              </button>
-            </div>
-          ))}
-        </div>
+      {/* Hero Section */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "50px",
+          backgroundColor: "#DEEBFF",
+        }}
+      >
+        <Box>
+          <Typography variant="h3" sx={{ fontWeight: "bold", marginBottom: 3 }}>
+            The #1 Software Development Tool
+          </Typography>
+          <Typography variant="h6" sx={{ marginBottom: 3 }}>
+            Plan, track, and manage your agile and software development projects in one tool.
+          </Typography>
+          <Button variant="contained" color="primary" size="large">
+            Try TASKFLOW for Free
+          </Button>
+        </Box>
+        <img src="" alt="JIRA Banner" style={{ width: "50%", borderRadius: "8px" }} />
+      </Box>
 
-        {/* Right Column: Content */}
-        <div className="col-8">
-          {components.map((component) => {
-            if (component.id === targetComponent) {
-              return (
-                <div key={component.id} className="text-center">
-                  <img src={component.img_src} alt={component.name} className="img-fluid mb-3" style={{
-                    width : 500,
-                    height : 300,
-                  }} />
-                  <p className="fw-light">{component.description}</p>
-                </div>
-              );
-            }
-            return null;
-          })}
-        </div>
-      </div>
-    </div>
+      {/* Features Section */}
+      <Container sx={{ marginTop: 6, marginBottom: 6 }}>
+        <Typography variant="h4" sx={{ fontWeight: "bold", textAlign: "center", marginBottom: 5 }}>
+          Features That Help You Move Fast
+        </Typography>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <img src="" alt="Feature 1" style={{ width: "100%", borderRadius: "8px" }} />
+            <Typography variant="h6" sx={{ fontWeight: "bold", marginTop: 2 }}>
+              Plan and Track
+            </Typography>
+            <Typography>
+              Break down large projects into manageable tasks with boards, sprints, and agile workflows.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <img src="" alt="Feature 2" style={{ width: "100%", borderRadius: "8px" }} />
+            <Typography variant="h6" sx={{ fontWeight: "bold", marginTop: 2 }}>
+              Collaborate Seamlessly
+            </Typography>
+            <Typography>
+              Connect your team with integrations, real-time updates, and powerful dashboards.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Container>
+
+      {/* Integrations Section */}
+      <Box
+        sx={{
+          padding: "50px",
+          backgroundColor: "#0747A6",
+          color: "#FFFFFF",
+        }}
+      >
+        <Container>
+          <Typography variant="h4" sx={{ fontWeight: "bold", textAlign: "center", marginBottom: 5 }}>
+            Integrate With Your Favorite Tools
+          </Typography>
+          <img src="" alt="Integrations" style={{ width: "100%", borderRadius: "8px" }} />
+        </Container>
+      </Box>
+
+      {/* Call to Action */}
+      <Box sx={{ textAlign: "center", padding: "50px" }}>
+        <Typography variant="h4" sx={{ fontWeight: "bold", marginBottom: 3 }}>
+          Start Your Free Trial Today
+        </Typography>
+        <Button variant="contained" color="primary" size="large">
+          Get Started
+        </Button>
+      </Box>
+
+      {/* Footer */}
+      <Box
+        sx={{
+          padding: "20px",
+          backgroundColor: "#253858",
+          color: "#FFFFFF",
+          textAlign: "center",
+        }}
+      >
+        <Typography>© 2024 JIRA. All rights reserved.</Typography>
+      </Box>
+    </Box>
   );
-}
-    const Hero = () => (
-        <section className="hero row bg-light py-5">
-            <div className="col-xl-6 text-center">
-                <h1>
-                    Great results start with <b>TaskFlow</b>
-                </h1>
-                <p>The only project management tool you need to plan and track every team's work.</p>
-            </div>
-            <div className="col-xl-6">
-                <Register />
-            </div>
-            <Services />
-            <Desc/>
-        </section>
-    );
-
-    return (
-        <main>
-            <Header />
-            <Hero />
-        </main>
-    );
 }

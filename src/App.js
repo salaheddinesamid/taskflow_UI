@@ -3,7 +3,7 @@ import "bootstrap/dist/js/bootstrap"; // Import Bootstrap JavaScript
 import "bootstrap/dist/css/bootstrap.css"; // Import Bootstrap CSS
 import "./App.css"; // Import custom CSS
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Main } from "./routes/Main"; // Main component for the home page
+import  Main  from "./routes/Main"; // Main component for the home page
 import { Login } from "./routes/Login"; // Login component
 import { Dashboard } from "./routes/pm_dashboard/Dashboard1"; // Dashboard component for projects
 import { NewProject } from "./routes/NewProject"; // Component to create a new project 

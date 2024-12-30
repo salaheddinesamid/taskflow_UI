@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import { TaskBoard } from './TaskBoard';
-import { Card, CardContent,ListItemIcon } from '@mui/material';
+import { ListItemIcon } from '@mui/material';
 import { List, ListItem, ListItemText, Button } from '@mui/material';
-import { ProjectBoard } from './ProjectBoard';
 import { Summary } from './Summary';
 import { useNavigate } from 'react-router-dom';
 import { Meeting } from './Meeting';
@@ -12,7 +11,7 @@ import { Meeting } from './Meeting';
 const Main = ({project}) => {
   const navigate = useNavigate();
     const [currentView,setCurrentView] = useState(1);
-    const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
+    //const [user,setUser] = useState(JSON.parse(localStorage.getItem('user')));
     const items = [
       {
         "id" : 1,

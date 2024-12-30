@@ -6,11 +6,12 @@ import Header from "./Header";
 import { TaskBoard } from "./TaskBoard";
 import { Summary } from "./Summary";
 import { Meeting } from "./Meeting";
+import { NewProjectDialog } from "./NewProjectDialog";
 
 const Main = ({ project }) => {
   const navigate = useNavigate();
   const [currentView, setCurrentView] = useState(1);
-
+  const [openDialog,setOpenDialog] = useState(false);
   const items = [
     { id: 1, name: "Summary", icon: <Home />, view: <Summary project={project} /> },
     { id: 2, name: "Tasks", icon: <Task />, view: <TaskBoard /> },
@@ -39,7 +40,7 @@ const Main = ({ project }) => {
         color="primary"
         fullWidth
         sx={{ mb: 2 }}
-        onClick={() => navigate("/add_project")}
+        onClick={()=>{setOpenDialog(true)}}
       >
         + Add Project
       </Button>
@@ -97,6 +98,7 @@ const Main = ({ project }) => {
           )}
         </Box>
       </Box>
+      <NewProjectDialog open={openDialog}/>
     </Box>
   );
 };
